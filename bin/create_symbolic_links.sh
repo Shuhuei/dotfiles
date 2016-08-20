@@ -1,0 +1,25 @@
+#!/bin/bash
+
+CURRENT=`pwd`"/$0"
+DIR="${CURRENT%/*}/../dotfiles"
+
+TARGET_LIST=(
+    .vimrc
+    .vim
+    .gitconfig
+)
+
+for TARGET in ${TARGET_LIST[@]}
+do
+    if [ -e "$HOME/$TARGET" -o -L "$HOME/$TARGET" ]; then
+        echo -n "rm: remove existing file '$HOME/$TARGET'? "
+        read ANS
+        if [ "$ANS" = "y" -o "$ANS" = "yes" ]; then
+            rm -rf "$HOME/$TARGET"
+            ln -s -i "$DIR/$TARGET" "$HOME/$TARGET"
+        fi
+    else
+        rm -rf "$HOME/$TARGET"
+        ln -s -i "$DIR/$TARGET" "$HOME/$TARGET"
+    fi
+done
