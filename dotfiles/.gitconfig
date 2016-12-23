@@ -11,7 +11,7 @@ interactive = auto
 grep = auto
 
 [push]
-default = tracking
+	default = matching
 
 [core]
 editor = vim
