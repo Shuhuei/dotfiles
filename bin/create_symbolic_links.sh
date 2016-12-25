@@ -7,7 +7,7 @@ TARGET_LIST=(
     .vimrc
     .vim
     .gitconfig
-    tmux.conf
+    .tmux.conf
 )
 
 for TARGET in ${TARGET_LIST[@]}
